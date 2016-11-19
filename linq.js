@@ -88,6 +88,7 @@
             }
 
             function reset() {
+                currentIndex = 0;
                 iteratorArray.forEach(function (iterator) {
                     iterator.reset();
                 });
@@ -128,8 +129,7 @@
             }
 
             function hasMore() {
-                var currentHasMore = current.hasMore();
-                if (currentHasMore) {
+                if (current.hasMore()) {
                     return true;
                 }
 
