@@ -1,5 +1,5 @@
 # jaolinq
-just an other linq for JS
+just another linq for JS
 
 ## Usage
 
@@ -10,7 +10,7 @@ First, initialize a linqrator object:
     var arrayLinq = linq.linqrator(array);
 ```
 
-Second use it like you would use LINQ in C#:
+Second, use it like you would use LINQ in C#:
 
 ```javascript
     var newArray = arrayLinq
@@ -38,10 +38,10 @@ The above operations will not iterate the source.
 
 **Executions:**
 * toArray: iterates the linqrator into an array
-* any: true if any item matches
-* all: true if all items match
-* contains: true if item is in the linqrator
-* firstOrDefault: return the first matching item, null if no item matches
+* any: returns true if any item matches
+* all: returns true if all items match
+* contains: returns true if item is in the linqrator
+* firstOrDefault: returns the first matching item or *null* if no item matches
 * count: counts the matching items
 
 These will iterate the source.
