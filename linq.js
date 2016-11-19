@@ -228,7 +228,7 @@
             }
 
             function joinLinqrator(linqrator, joinFunc) {
-                return joinIterator(module.iterator, linqrator.iterator, joinFunc);
+                return joinIterator(linqrator.iterator, joinFunc);
             }
 
             function joinIterator(iterator, joinFunc) {
