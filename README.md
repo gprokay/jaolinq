@@ -46,6 +46,9 @@ The above operations will not iterate the source.
 
 These will iterate the source.
 
+API Documentation:
+https://github.com/gprokay/jaolinq/blob/master/api.md
+
 ### Samples
 
 ```javascript
