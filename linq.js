@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
 
     "use strict";
 
@@ -249,7 +249,13 @@
             function any(func) {
                 module.iterator.reset();
                 while (module.iterator.hasMore()) {
-                    if (func(module.iterator.next())) {
+                    var current = module.iterator.next();
+
+                    if (!func) {
+                        return true;
+                    }
+
+                    if (func(current)) {
                         return true;
                     }
                 }
@@ -300,6 +306,11 @@
                 module.iterator.reset();
                 while (module.iterator.hasMore()) {
                     var current = module.iterator.next();
+
+                    if (!func) {
+                        return current;
+                    }
+
                     if (func(current)) {
                         return current;
                     }
