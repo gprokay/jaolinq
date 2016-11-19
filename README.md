@@ -6,18 +6,18 @@ just an other linq for JS
 First, initialize a linqrator object:
 
 ```javascript
-var array = [1,2,3];
-var arrayLinq = linq.linqrator(array);
+    var array = [1,2,3];
+    var arrayLinq = linq.linqrator(array);
 ```
 
 Second use it like you would use LINQ in C#:
 
 ```javascript
-var newArray = arrayLinq
-                .where(i => {return i>=2;})
-                .select(i => {return i*2;})
-                .toArray();
-// result: [4,6]                
+    var newArray = arrayLinq
+                    .where(i => {return i>=2;})
+                    .select(i => {return i*2;})
+                    .toArray();
+    // result: [4,6]                
 ```
 
 The iteration happens when toArray() is called, not a second before.
@@ -48,4 +48,36 @@ These will iterate the source.
 
 ### Samples
 
-Coming soon ...
+```javascript
+    var persons = [
+        { id: 1, name: 'john', gender: 'male' },
+        { id: 2, name: 'carl', gender: 'male' },
+        { id: 3, name: 'kate', gender: 'female' },
+        { id: 4, name: 'judy', gender: 'female' }];
+
+    //Simple filtering
+    var males = linq.linqrator(persons)
+        .where(p => { return p.gender === 'male' })
+        .toArray();
+    
+    //Filter then select
+    var femaleNames = linq.linqrator(persons)
+        .where(p => { return p.gender === 'female' })
+        .select(p => { return p.name })
+        .toArray();
+
+    //Count
+    var count = linq.linqrator(persons)
+        .count(p => { return p.name === 'john'; );
+    
+    var marriedMap = [
+        { husbandId: 1, wifeId: 3 },
+        { husbandId: 2, wifeId: 4 }];
+    
+    //Join by a matching map
+    var marriedCouples = linq.linqrator(persons)
+        .joinArray(marriedMap, (person, map) => { return person.id === map.wifeId })
+        .joinArray(persons, (left, person) => { return left[1].husbandId === person.id })
+        .select(couple => { return { wife: couple[0], husband: couple[2] } })
+        .toArray();
+```
